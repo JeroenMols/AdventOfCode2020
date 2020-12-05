@@ -27,7 +27,7 @@
  */
 import { readFileSync } from 'fs'
 
-const testValues = readFileSync('challenge_03.txt', 'utf8').trimEnd().split('\n')
+const testValues = readFileSync('../data/day_02.txt', 'utf8').trimEnd().split('\n')
 const sampleValues = Array.of(    "1-3 a: abcde",    "1-3 b: cdefg",    "2-9 c: ccccccccc",)
 
 export function insertUniformSeparator(value) {

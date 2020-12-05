@@ -28,7 +28,7 @@
  */
 import { readFileSync } from 'fs'
 
-const testValues = readFileSync('challenge_01.txt', 'utf8').trimEnd().split('\n').map(value => parseInt(value))
+const testValues = readFileSync('../data/day_01.txt', 'utf8').trimEnd().split('\n').map(value => parseInt(value))
 const sum = 2020
 const sampleValues = Array(1721,979,366,299,675,1456)
 

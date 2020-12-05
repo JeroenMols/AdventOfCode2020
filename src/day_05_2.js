@@ -11,7 +11,7 @@
  */
 import {readFileSync} from 'fs'
 
-const testValues = readFileSync('challenge_09.txt', 'utf8').trimEnd().split('\n')
+const testValues = readFileSync('../data/day_05.txt', 'utf8').trimEnd().split('\n')
 const sampleValues = Array.of(
     "FBFBBFFRLR", // row 44, column 5, seat ID 357.
     "BFFFBBFRRR", // row 70, column 7, seat ID 567.

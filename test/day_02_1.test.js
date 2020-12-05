@@ -1,4 +1,4 @@
-import {countOccurrences, insertUniformSeparator} from "../challenge_03.js";
+import {countOccurrences, insertUniformSeparator} from "../src/day_02_1.js";
 import * as assert from "assert";
 
 

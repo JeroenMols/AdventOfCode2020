@@ -74,7 +74,7 @@
 
 import {readFileSync} from 'fs'
 
-const testValues = readFileSync('challenge_07.txt', 'utf8').trimEnd().split(/^\n/gm)
+const testValues = readFileSync('../data/day_04.txt', 'utf8').trimEnd().split(/^\n/gm)
 const sampleValues = Array.of(
     "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd byr:1937 iyr:2017 cid:147 hgt:183cm",
     "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884 hcl:#cfa07d byr:1929",
