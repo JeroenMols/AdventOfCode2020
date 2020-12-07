@@ -65,8 +65,9 @@ function countBagsIn(currentBag, allBagsRules, parentCount) {
     let bags = getBagsIn(currentBagRule)
     if (bags.length === 0) return currentCount
     for (let bag of bags) {
-        currentCount += getBagCount(currentBagRule, bag) * parentCount
-        currentCount += countBagsIn(bag, allBagsRules, getBagCount(currentBagRule, bag) * parentCount)
+        let bagCount = getBagCount(currentBagRule, bag) * parentCount;
+        currentCount += bagCount
+        currentCount += countBagsIn(bag, allBagsRules, bagCount)
     }
     return currentCount
 }

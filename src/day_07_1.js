@@ -54,8 +54,7 @@ function getBagsIn(bagRule) {
 }
 
 function getCurrentBagRule(allBagsRules, currentBag) {
-    let bagRule
-    for (bagRule of allBagsRules) {
+    for (let bagRule of allBagsRules) {
         if (bagRule.startsWith(currentBag)) {
             return bagRule
         }
@@ -66,8 +65,7 @@ function canHoldBagIn(bagToHold, currentBag, allBagsRules) {
     let currentBagRule = getCurrentBagRule(allBagsRules, currentBag)
     let bags = getBagsIn(currentBagRule)
     if (bags.length === 0) return false
-    let bag
-    for (bag of bags) {
+    for (let bag of bags) {
         if (bag === bagToHold) return true
         if (canHoldBagIn(bagToHold, bag, allBagsRules)) return true
     }
