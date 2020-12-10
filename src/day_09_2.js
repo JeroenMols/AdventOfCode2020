@@ -64,8 +64,8 @@ function isValidNumber(preamble, number) {
     for (let i in preamble) {
         value = preamble[i]
         remainingPreamble = preamble
-        if (preamble.includes(""+(number - value))) {
-            console.log("Valid number: " + number + " (" +value + ", " + (number-value) +")")
+        if (preamble.includes(number - value)) {
+            console.log("Valid number: " + number + " (" + value + ", " + (number - value) + ")")
             return true
         }
     }
@@ -74,40 +74,30 @@ function isValidNumber(preamble, number) {
 
 function getFirstInvalidNumber(numbers, preambleLength) {
     let preamble
-    for (let i = preambleLength; i< numbers.length; i++) {
-        preamble = numbers.slice(i-preambleLength, i)
-        if (!isValidNumber(preamble, numbers[i])) return parseInt(numbers[i])
+    for (let i = preambleLength; i < numbers.length; i++) {
+        preamble = numbers.slice(i - preambleLength, i)
+        if (!isValidNumber(preamble, numbers[i])) return numbers[i]
     }
 }
 
-function sortHighToLow() {
-    return (left, right) => {
-        if (left > right) return -1
-        else if (left < right) return 1
-        else return 0
-    };
-}
-
 function sumMinAndMaxInRange(numbers, i, startIndex) {
-    let sortedSequence = numbers.slice(i, startIndex+1).map(v => parseInt(v)).sort(sortHighToLow())
-    return sortedSequence[0] + sortedSequence[sortedSequence.length - 1]
+    let sortedSequence = numbers.slice(i, startIndex + 1)
+    return Math.min.apply(Math, sortedSequence) + Math.max.apply(Math, sortedSequence)
 }
 
-function findWeakness(numbers, preambleLength) {
+function findWeakness(textNumbers, preambleLength) {
+    const numbers = textNumbers.map(v => parseInt(v))
     let invalidNumber = getFirstInvalidNumber(numbers, preambleLength)
-    let sum, subIndex, finished
-    for (let i = 0; i< numbers.length; i++) {
-        finished = false
+
+    let sum, subIndex
+    for (let i = 0; i < numbers.length; i++) {
         subIndex = i
         sum = 0
-        while (!finished) {
-            sum += parseInt(numbers[subIndex])
+        while (sum < invalidNumber) {
+            sum += numbers[subIndex]
             if (sum == invalidNumber) {
                 console.log("Weakness found")
                 return sumMinAndMaxInRange(numbers, i, subIndex);
-            } else if (sum > invalidNumber) {
-                console.log("No weakness starting from " + i)
-                finished = true
             }
             subIndex += 1
         }

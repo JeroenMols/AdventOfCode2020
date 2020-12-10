@@ -78,22 +78,23 @@ const sampleValues = Array.of(
 )
 
 function isValidNumber(preamble, number) {
-    let value, remainingPreamble
+    let value, remainingPreamblegit
     for (let i in preamble) {
         value = preamble[i]
         remainingPreamble = preamble
-        if (preamble.includes(""+(number - value))) {
-            console.log("Valid number: " + number + " (" +value + ", " + (number-value) +")")
+        if (preamble.includes((number - value))) {
+            console.log("Valid number: " + number + " (" + value + ", " + (number - value) + ")")
             return true
         }
     }
     return false
 }
 
-function getFirstInvalidNumber(numbers, preambleLength) {
+function getFirstInvalidNumber(textNumbers, preambleLength) {
+    const numbers = textNumbers.map(v => parseInt(v))
     let preamble
-    for (let i = preambleLength; i< numbers.length; i++) {
-        preamble = numbers.slice(i-preambleLength, i)
+    for (let i = preambleLength; i < numbers.length; i++) {
+        preamble = numbers.slice(i - preambleLength, i)
         if (!isValidNumber(preamble, numbers[i])) return numbers[i]
     }
 }
